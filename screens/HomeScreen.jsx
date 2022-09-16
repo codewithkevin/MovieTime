@@ -22,7 +22,7 @@ export default function HomeScreen() {
   return (
     <SafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View className="p-4">
+        <View className="p-1">
           <View className="mb-1">
             <Main />
           </View>

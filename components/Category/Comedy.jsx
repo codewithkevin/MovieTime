@@ -17,9 +17,14 @@ export default function comedy() {
     }
   };
   return (
-    <View>
+    <View className="ml-[5px] mb-8">
       <View className="flex flex-row justify-between mb-5">
-        <Text className="font-bold  text text-xl">Comedy</Text>
+        <Text
+          style={{ color: isSwitchOn === true ? "white" : "black" }}
+          className="font-bold  text text-xl"
+        >
+          Comedy
+        </Text>
         <Text
           style={{ color: isSwitchOn === true ? "white" : "black" }}
           onPress={() => navigation.navigate("Mostpopular")}

@@ -33,7 +33,7 @@ export default function Main() {
   };
 
   return (
-    <View className="w-full h-full text-white">
+    <View className="w-full h-full">
       <View className="rounded-2xl">
         <Image
           className="w-full h-[250px] rounded-2xl"
