@@ -75,7 +75,6 @@ export default function TrailCard({ movie, theme }) {
             </View>
           </View>
 
-          <Text>{movie?.title}</Text>
         </View>
       </TouchableOpacity>
       <View className="flex flex-row space-x-2">
