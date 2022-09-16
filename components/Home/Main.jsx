@@ -34,7 +34,7 @@ export default function Main() {
 
   return (
     <View className="w-full h-full">
-      <View className="rounded-2xl">
+      <View className="rounded-2xl mt-3">
         <Image
           className="w-full h-[250px] rounded-2xl"
           source={{
