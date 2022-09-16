@@ -1,11 +1,10 @@
-
 import React, { useContext } from "react";
 import { Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from './../../../firebse';
+import { db } from "./../../../firebse";
 
 export default function MovieCard({ movie, theme }) {
   const [color, setColor] = React.useState(false);
@@ -19,6 +18,7 @@ export default function MovieCard({ movie, theme }) {
         const docRef = await addDoc(collection(db, "collections"), {
           id: movie.id,
           Image: image,
+          name: movie.title,
         });
         console.log("Document written with ID: ", docRef.id);
       } catch (e) {
@@ -77,5 +77,4 @@ export default function MovieCard({ movie, theme }) {
       </View>
     </View>
   );
-};
-
+}
