@@ -39,7 +39,7 @@ export default function MovieCard({ movie, theme }) {
   const navigation = useNavigation();
 
   return (
-    <View key={movie.id} className="mx-4">
+    <View key={movie.id} className="mx-2">
       <TouchableOpacity
         onPress={() =>
           navigation.navigate("ViewPage", {
@@ -61,19 +61,34 @@ export default function MovieCard({ movie, theme }) {
           loading="lazy"
         />
       </TouchableOpacity>
-      <View className="flex flex-row space-x-2">
-        <MaterialCommunityIcons
+      <View className="flex  space-x-2">
+        {/* <MaterialCommunityIcons
           name={"cards-heart"}
           color={color ? "red" : "gray"}
           size={27}
           onPress={toggleIsLoading}
-        />
+        /> */}
         <Text
           style={{ color: theme === true ? "white" : "black" }}
-          className="mt-1"
+          className="mt-1 ml-2"
         >
           {truncatedString(movie?.title, 10)}
         </Text>
+        <View className="flex flex-row space-x-1 mt-1 ml-[1px]">
+          <MaterialCommunityIcons
+            name={"star"}
+            // color={color ? "red" : "gray"}
+            color={"gold"}
+            size={22}
+            onPress={toggleIsLoading}
+          />
+          <Text
+            style={{ color: theme === true ? "white" : "black" }}
+            className="mt-1"
+          >
+            {movie?.vote_average}
+          </Text>
+        </View>
       </View>
     </View>
   );

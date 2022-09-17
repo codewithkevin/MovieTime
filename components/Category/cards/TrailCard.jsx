@@ -74,23 +74,36 @@ export default function TrailCard({ movie, theme }) {
               />
             </View>
           </View>
-
-          <Text>{movie?.title}</Text>
         </View>
       </TouchableOpacity>
-      <View className="flex flex-row space-x-2">
-        <MaterialCommunityIcons
+      <View className="flex  space-x-2">
+        {/* <MaterialCommunityIcons
           name={"cards-heart"}
           color={color ? "red" : "gray"}
           size={27}
           onPress={toggleIsLoading}
-        />
+        /> */}
         <Text
           style={{ color: theme === true ? "white" : "black" }}
           className="mt-1"
         >
           {truncatedString(movie?.title, 10)}
         </Text>
+        <View className="flex flex-row space-x-1 mt-1 ml-[10px]">
+          <MaterialCommunityIcons
+            name={"star"}
+            // color={color ? "red" : "gray"}
+            color={"gold"}
+            size={22}
+            onPress={toggleIsLoading}
+          />
+          <Text
+            style={{ color: theme === true ? "white" : "black" }}
+            className="mt-1"
+          >
+            {movie?.vote_average}
+          </Text>
+        </View>
       </View>
     </View>
   );
