@@ -17,7 +17,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from './../firebse';
 
-export default function ViewDetails() {
+export default function ViewDetails({ navigation: { goBack } }) {
   const route = useRoute();
   const [color, setColor] = React.useState(false);
 
@@ -99,14 +99,18 @@ export default function ViewDetails() {
               }}
             />
             <View className="absolute p-10 flex flex-row">
-              <View className="flex-none w-14 h-[30px]">
-                <Text className="text-red-600">Hello</Text>
+              <View className="flex-none w-14 mt-5 h-[30px]">
+                <MaterialCommunityIcons
+                  name={"arrow-left-drop-circle-outline"}
+                  color={"blue"}
+                  size={35}
+                  onPress={() => goBack()}
+                />
               </View>
               <View className="flex-initial ml-[240px] mt-5 w-54">
                 <MaterialCommunityIcons
                   name={"cards-heart"}
-                  color={color ? "red" : "white"}
-                  
+                  color={color ? "red" : "gray"}
                   size={30}
                   onPress={toggleIsLoading}
                 />
