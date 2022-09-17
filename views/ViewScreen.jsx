@@ -69,7 +69,7 @@ export default function ViewDetails() {
       >
         <View key={id}>
           <Image
-            className="w-[450px] h-[250px] rounded-b-[100px]"
+            className="w-[450px] h-[250px] rounded-b-[100px] rounded-br-[200px]"
             source={{
               uri: background,
             }}
