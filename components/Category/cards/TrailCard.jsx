@@ -12,7 +12,7 @@ export default function TrailCard({ movie, theme }) {
   const image = `https://image.tmdb.org/t/p/original/${movie?.poster_path}`;
 
   const toggleIsLoading = async () => {
-    setColor((current) => !current);
+    setColor((current) => !current)
     if (color === false) {
       try {
         const docRef = await addDoc(collection(db, "collections"), {
