@@ -102,7 +102,7 @@ export default function ViewDetails({ navigation: { goBack } }) {
               <View className="flex-none w-14 mt-5 h-[30px]">
                 <MaterialCommunityIcons
                   name={"arrow-left-drop-circle-outline"}
-                  color={"blue"}
+                  color={"yellow"}
                   size={35}
                   onPress={() => goBack()}
                 />
