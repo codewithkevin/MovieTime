@@ -25,7 +25,7 @@ export default function TrailCard({ movie, theme }) {
         console.error("Error adding document: ", e);
       }
     } else {
-      alert("Removed");
+      alert("Document added successfully")
     }
   };
 
@@ -74,7 +74,6 @@ export default function TrailCard({ movie, theme }) {
               />
             </View>
           </View>
-
         </View>
       </TouchableOpacity>
       <View className="flex flex-row space-x-2">
