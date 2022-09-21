@@ -7,7 +7,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from './../../../firebse';
 
-export default function MovieCard ({ movie }) {
+export default function MovieCard({ movie, theme }) {
   const [color, setColor] = React.useState(false);
 
   const image = `https://image.tmdb.org/t/p/original/${movie?.poster_path}`;
@@ -68,7 +68,12 @@ export default function MovieCard ({ movie }) {
           size={27}
           onPress={toggleIsLoading}
         />
-        <Text className="mt-1">{truncatedString(movie?.title, 10)}</Text>
+        <Text
+          style={{ color: theme === true ? "white" : "black" }}
+          className="mt-1"
+        >
+          {truncatedString(movie?.title, 10)}
+        </Text>
       </View>
     </View>
   );
