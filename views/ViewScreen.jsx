@@ -14,7 +14,7 @@ import { useRoute } from "@react-navigation/native";
 import { AppContext } from ".././context/AppContext";
 import Popular from "./../components/Category/Popular";
 
-export default function ViewPage() {
+export default function ViewDetails() {
   const route = useRoute();
   // const { movies, trialler, comedy, upcoming, isSwitchOn } =
   //   useContext(AppContext);
