@@ -6,7 +6,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import MovieCard from './cards/Movie';
 
-export function Popular() {
+export default function Popular() {
   const { movies } = useContext(AppContext);
   const navigation = useNavigation();
   const truncatedString = (str, num) => {
@@ -19,9 +19,7 @@ export function Popular() {
   return (
     <View>
       <View className="flex flex-row justify-between mb-5">
-        <Text className="font-bold  text text-xl">
-          Most Popular Movie
-        </Text>
+        <Text className="font-bold  text text-xl">Most Popular Movie</Text>
         <Text
           onPress={() => navigation.navigate("Mostpopular")}
           className="text-md text-blue-400"

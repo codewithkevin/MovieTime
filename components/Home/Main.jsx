@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Text, View, Image, ScrollView, FlatList } from "react-native";
 import { AppContext } from "./../../context/AppContext";
-import {Popular} from "./../Category/Popular";
-import { Comedy } from "./../Category/Popular";
-import { Upcoming } from "./../Category/Popular";
-import { Trailer } from "./../Category/Popular";
-
+// import {Popular} from "./../Category/Popular";
+// import { Comedy } from "./../Category/Popular";
+// import { Upcoming } from "./../Category/Popular";
+// import { Trailer } from "./../Category/Popular";
+import Popular from "./../Category/Popular";
+import Comedy from "./../Category/Comedy";
+import Trailer from "./../Category/Trailer";
+import Upcoming from "./../Category/Upcoming";
 
 export default function Main() {
   const { movies } = useContext(AppContext);

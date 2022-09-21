@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "./../../../firebse";
 
-export default function Comcard({ movie }) {
+export default function TrailCard({ movie }) {
   const [color, setColor] = React.useState(false);
 
   const image = `https://image.tmdb.org/t/p/original/${movie?.poster_path}`;
@@ -40,13 +40,30 @@ export default function Comcard({ movie }) {
   return (
     <View key={movie.id} className="mx-4">
       <TouchableOpacity
-        onPress={() => navigation.navigate("ViewPage", { id: movie.id })}
+        key={movie.id}
+        onPress={() => navigation.navigate("TrialView", { id: movie.id })}
       >
-        <Image
-          className="w-[150px] h-[190px] rounded-2xl"
-          source={{ uri: image }}
-          loading="lazy"
-        />
+        <View className="mx-3">
+          <View className="relative">
+            <Image
+              className="w-[250px] h-[150px] rounded-2xl"
+              source={{
+                uri: `https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`,
+              }}
+              loading="lazy"
+            />
+            <View className="absolute flex p-10 ml-10">
+              <Ionicons
+                name={"play-circle-outline"}
+                size="80"
+                color={"white"}
+                className="justify-center items-center"
+              />
+            </View>
+          </View>
+
+          <Text>{movie?.title}</Text>
+        </View>
       </TouchableOpacity>
       <View className="flex flex-row space-x-2">
         <MaterialCommunityIcons

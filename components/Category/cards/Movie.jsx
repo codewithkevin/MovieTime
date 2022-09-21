@@ -6,7 +6,8 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from './../../../firebse';
-const MovieCard = ({ movie }) => {
+
+export default function MovieCard ({ movie }) {
   const [color, setColor] = React.useState(false);
 
   const image = `https://image.tmdb.org/t/p/original/${movie?.poster_path}`;
@@ -61,4 +62,3 @@ const MovieCard = ({ movie }) => {
   );
 };
 
-export default MovieCard;
