@@ -1,17 +1,30 @@
 import "react-native-gesture-handler";
+import React, {useEffect, useState} from "react"
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { TailwindProvider } from "tailwindcss-react-native";
 import AppProvider from "./context/AppContext";
+import Loading from "./screens/Loading";
 
-
-import StackNav from './navigation/StackNavigation';
+import StackNav from "./navigation/StackNavigation";
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2000);
+  }, []);
+
   return (
     <TailwindProvider>
       <AppProvider>
-       <StackNav />
+        {loading === false ? (
+          <View className="flex-1">
+            <StackNav />
+          </View>
+        ) : (
+          <Loading />
+        )}
       </AppProvider>
     </TailwindProvider>
   );

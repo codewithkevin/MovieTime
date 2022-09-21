@@ -44,7 +44,7 @@ export default function Main() {
         />
       </View>
       <View>
-        <View className="mt-10 mb-[500px]">
+        <View className="mt-10 mb-[20px]">
           <Popular />
           <Trailer />
           <Comedy />
