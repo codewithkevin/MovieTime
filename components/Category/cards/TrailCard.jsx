@@ -41,7 +41,19 @@ export default function TrailCard({ movie }) {
     <View key={movie.id} className="mx-4">
       <TouchableOpacity
         key={movie.id}
-        onPress={() => navigation.navigate("TrialView", { id: movie.id })}
+        onPress={() =>
+          navigation.navigate("TrialView", {
+            id: movie.id,
+            name: movie.title,
+            background: image,
+            vote: movie?.vote_average,
+            date: movie?.release_date,
+            popularity: movie?.popularity,
+            language: movie?.original_language,
+            overview: movie?.overview,
+            poster: `https://image.tmdb.org/t/p/original/${movie?.poster_path}`,
+          })
+        }
       >
         <View className="mx-3">
           <View className="relative">

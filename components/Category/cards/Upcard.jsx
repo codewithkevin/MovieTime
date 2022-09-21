@@ -40,7 +40,19 @@ export default function Upcard({ movie }) {
   return (
     <View key={movie.id} className="mx-4">
       <TouchableOpacity
-        onPress={() => navigation.navigate("ViewPage", { id: movie.id })}
+        onPress={() =>
+          navigation.navigate("ViewPage", {
+            id: movie.id,
+            name: movie.title,
+            background: image,
+            vote: movie?.vote_average,
+            date: movie?.release_date,
+            popularity: movie?.popularity,
+            language: movie?.original_language,
+            overview: movie?.overview,
+            poster: `https://image.tmdb.org/t/p/original/${movie?.poster_path}`,
+          })
+        }
       >
         <Image
           className="w-[150px] h-[190px] rounded-2xl"

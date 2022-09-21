@@ -10,8 +10,7 @@ import React, { useContext } from "react";
 
 import { AppContext } from "./../context/AppContext";
 import Menu from "./DrawerNav";
-import ViewPage from './../Views/ViewPage';
-
+import ViewPage from './../views/ViewPage';
 
 const Stack = createNativeStackNavigator();
 
