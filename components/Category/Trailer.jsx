@@ -17,7 +17,7 @@ export default function Trailer() {
     }
   };
   return (
-    <View>
+    <View className="ml-[5px] mb-8">
       <View className="flex flex-row justify-between mb-5">
         <Text
           style={{ color: isSwitchOn === true ? "white" : "black" }}

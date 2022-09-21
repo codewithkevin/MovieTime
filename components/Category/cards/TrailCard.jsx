@@ -18,6 +18,7 @@ export default function TrailCard({ movie, theme }) {
         const docRef = await addDoc(collection(db, "collections"), {
           id: movie.id,
           Image: image,
+          name: movie.title,
         });
         console.log("Document written with ID: ", docRef.id);
       } catch (e) {

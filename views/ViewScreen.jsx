@@ -16,8 +16,6 @@ import Popular from "./../components/Category/Popular";
 
 export default function ViewDetails() {
   const route = useRoute();
-  // const { movies, trialler, comedy, upcoming, isSwitchOn } =
-  //   useContext(AppContext);
   const { isSwitchOn } = useContext(AppContext);
 
   //UseRoute is deprecated in favor of useNavigation
