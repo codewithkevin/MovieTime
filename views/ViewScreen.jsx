@@ -13,9 +13,14 @@ import { useNavigation } from "@react-navigation/native";
 import { useRoute } from "@react-navigation/native";
 import { AppContext } from ".././context/AppContext";
 import Popular from "./../components/Category/Popular";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from './../firebse';
 
-export default function ViewDetails() {
+export default function ViewDetails({ navigation: { goBack } }) {
   const route = useRoute();
+  const [color, setColor] = React.useState(false);
+
   const { isSwitchOn } = useContext(AppContext);
 
   //UseRoute is deprecated in favor of useNavigation
@@ -38,6 +43,24 @@ export default function ViewDetails() {
       return str.substring(0, num) + "...";
     } else {
       return str;
+    }
+  };
+
+  const toggleIsLoading = async () => {
+    setColor((current) => !current);
+    if (color === false) {
+      try {
+        const docRef = await addDoc(collection(db, "collections"), {
+          id: id,
+          Image: background,
+          name: name,
+        });
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    } else {
+      alert("Removed");
     }
   };
 
@@ -68,12 +91,33 @@ export default function ViewDetails() {
         className="static h-full w-full"
       >
         <View key={id}>
-          <Image
-            className="w-[450px] h-[250px] rounded-b-[100px]"
-            source={{
-              uri: background,
-            }}
-          />
+          <View className="static ...">
+            <Image
+              className="w-[450px] h-[250px] rounded-b-[100px] rounded-br-[200px]"
+              source={{
+                uri: background,
+              }}
+            />
+            <View className="absolute p-10 flex flex-row">
+              <View className="flex-none w-14 mt-5 h-[30px]">
+                <MaterialCommunityIcons
+                  name={"arrow-left-drop-circle-outline"}
+                  color={"yellow"}
+                  size={35}
+                  onPress={() => goBack()}
+                />
+              </View>
+              <View className="flex-initial ml-[240px] mt-5 w-54">
+                <MaterialCommunityIcons
+                  name={"cards-heart"}
+                  color={color ? "red" : "gray"}
+                  size={30}
+                  onPress={toggleIsLoading}
+                />
+                {/* <Text className="text-red-600">Hello</Text> */}
+              </View>
+            </View>
+          </View>
           <View className="flex flex-row">
             <View className="flex-none w-14 h-14">
               <Image
