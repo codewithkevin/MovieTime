@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import {
   Button,
+  SafeAreaView,
   View,
   Text,
   Image,
@@ -46,7 +47,7 @@ export default function Favorite({ navigation }) {
   // const image = `https://image.tmdb.org/t/p/original/${item?.poster_path}`;
 
   return (
-    <View className="flex p-3 mb-[200px] w-full h-full">
+    <SafeAreaView className="flex p-3 mb-[200px] w-full h-full">
       <FlatList
         data={movies}
         renderItem={({ item }) => (
@@ -80,7 +81,7 @@ export default function Favorite({ navigation }) {
         )}
         numColumns={2}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
