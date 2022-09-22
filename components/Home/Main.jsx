@@ -1,14 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Text, View, Image, ScrollView, FlatList } from "react-native";
 import { AppContext } from "./../../context/AppContext";
-// import {Popular} from "./../Category/Popular";
-// import { Comedy } from "./../Category/Popular";
-// import { Upcoming } from "./../Category/Popular";
-// import { Trailer } from "./../Category/Popular";
 import Popular from "./../Category/Popular";
 import Comedy from "./../Category/Comedy";
 import Trailer from "./../Category/Trailer";
 import Upcoming from "./../Category/Upcoming";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Main() {
   const { movies } = useContext(AppContext);
@@ -32,8 +29,21 @@ export default function Main() {
     setIsLoading((current) => !current);
   };
 
+  const navigation = useNavigation();
+
   return (
     <View className="w-full h-full">
+      <View className="flex flex-row p-2">
+        <Text className="basis-[40%]" onPress={() => navigation.openDrawer()}>
+          Click me{" "}
+        </Text>
+        <Text className="basis-[40%]">
+          movietime 
+        </Text>
+        <Text className="basis-[20%]">
+          Click me{" "}
+        </Text>
+      </View>
       <View className="rounded-2xl mt-3">
         <Image
           className="w-full h-[250px] rounded-2xl"

@@ -35,7 +35,7 @@ export default function StackNav() {
       <Stack.Navigator initialRouteName="Menu">
         <Stack.Screen
           options={{ headerShown: false }}
-          name="Menu"
+          name="MenuList"
           component={Menu}
         />
         <Stack.Screen
