@@ -36,7 +36,7 @@ export default function Main() {
   return (
     <View className="w-full h-full">
       <View className="flex flex-row p-2">
-        <View className="basis-[30%]">
+        <View className="basis-[35%]">
           <MaterialCommunityIcons
             name={"menu"}
             color={"black"}
@@ -45,7 +45,7 @@ export default function Main() {
           />
         </View>
         <View className="basis-[55%]">
-          <Text className="text-[#FB5558] font-bold text-[25px]">
+          <Text className="text-[#FB5558] font-bold text-[23px]">
             movietime
           </Text>
         </View>
