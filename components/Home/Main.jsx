@@ -1,14 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Text, View, Image, ScrollView, FlatList } from "react-native";
 import { AppContext } from "./../../context/AppContext";
-// import {Popular} from "./../Category/Popular";
-// import { Comedy } from "./../Category/Popular";
-// import { Upcoming } from "./../Category/Popular";
-// import { Trailer } from "./../Category/Popular";
 import Popular from "./../Category/Popular";
 import Comedy from "./../Category/Comedy";
 import Trailer from "./../Category/Trailer";
 import Upcoming from "./../Category/Upcoming";
+import { useNavigation } from "@react-navigation/native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 
 export default function Main() {
   const { movies } = useContext(AppContext);
@@ -32,8 +31,35 @@ export default function Main() {
     setIsLoading((current) => !current);
   };
 
+  const navigation = useNavigation();
+
   return (
     <View className="w-full h-full">
+      <View className="flex flex-row p-2">
+        <View className="basis-[30%]">
+          <MaterialCommunityIcons
+            name={"menu"}
+            color={"black"}
+            size={30}
+            onPress={() => navigation.openDrawer()}
+          />
+        </View>
+        <View className="basis-[55%]">
+          <Text className="text-[#FB5558] font-bold text-[25px]">
+            movietime
+          </Text>
+        </View>
+        <View className="basis-[20%]">
+          <View>
+            <MaterialCommunityIcons
+              name={"cloud-search-outline"}
+              color={"black"}
+              size={30}
+              onPress={() => navigation.openDrawer()}
+            />
+          </View>
+        </View>
+      </View>
       <View className="rounded-2xl mt-3">
         <Image
           className="w-full h-[250px] rounded-2xl"
