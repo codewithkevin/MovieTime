@@ -6,6 +6,8 @@ import Comedy from "./../Category/Comedy";
 import Trailer from "./../Category/Trailer";
 import Upcoming from "./../Category/Upcoming";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 
 export default function Main() {
   const { movies } = useContext(AppContext);
@@ -34,15 +36,29 @@ export default function Main() {
   return (
     <View className="w-full h-full">
       <View className="flex flex-row p-2">
-        <Text className="basis-[40%]" onPress={() => navigation.openDrawer()}>
-          Click me{" "}
-        </Text>
-        <Text className="basis-[40%]">
-          movietime 
-        </Text>
-        <Text className="basis-[20%]">
-          Click me{" "}
-        </Text>
+        <View className="basis-[30%]">
+          <MaterialCommunityIcons
+            name={"menu"}
+            color={"black"}
+            size={30}
+            onPress={() => navigation.openDrawer()}
+          />
+        </View>
+        <View className="basis-[55%]">
+          <Text className="text-[#FB5558] font-bold text-[25px]">
+            movietime
+          </Text>
+        </View>
+        <View className="basis-[20%]">
+          <View>
+            <MaterialCommunityIcons
+              name={"cloud-search-outline"}
+              color={"black"}
+              size={30}
+              onPress={() => navigation.openDrawer()}
+            />
+          </View>
+        </View>
       </View>
       <View className="rounded-2xl mt-3">
         <Image
