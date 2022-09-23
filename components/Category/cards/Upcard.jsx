@@ -51,7 +51,7 @@ export default function Upcard({ movie, theme }) {
             popularity: movie?.popularity,
             language: movie?.original_language,
             overview: movie?.overview,
-            poster: `https://image.tmdb.org/t/p/original/${movie?.poster_path}`,
+            poster: `https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`,
           })
         }
       >
