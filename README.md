@@ -10,7 +10,8 @@ Based on the films that the user liked, the application generates recommendation
 </ul>
 
 # Credit 
-<p>Happy Thanks to <link>http://druidsdesign@mail.com/</link> for supporting me with the Ui design</p>
+<p>Happy Thanks to Victoria Tihonovich
+ for supporting me with the Ui design</p>
 
 Link to UI: <link>https://www.behance.net/gallery/96923617/Movie-App-Concept</link>
 
