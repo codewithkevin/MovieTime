@@ -18,5 +18,10 @@ Link to UI: <link>https://www.behance.net/gallery/96923617/Movie-App-Concept</li
 # Work View
 <img src="workshot/Screenshot (69).png" alt="">
 <img src="workshot/Screenshot (70).png" alt="">
-<img src="workshot/Screenshot (72).png" alt="">
+<img src="workshot/Screenshot (78).png" alt="">
 <img src="workshot/Screenshot (73).png" alt="">
+<img src="workshot/Screenshot (72).png" alt="">
+<img src="workshot/Screenshot (74).png" alt="">
+<img src="workshot/Screenshot (75).png" alt="">
+<img src="workshot/Screenshot (76).png" alt="">
+<img src="workshot/Screenshot (77).png" alt="">
