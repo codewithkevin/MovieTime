@@ -10,7 +10,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 
 export default function Main() {
-  const { movies } = useContext(AppContext);
+  const { movies, isSwitchOn } = useContext(AppContext);
   const movie = movies[Math.floor(Math.random() * movies.length)];
   const movie1 = movies[Math.floor(Math.random() * movies.length)];
   const movie2 = movies[Math.floor(Math.random() * movies.length)];
@@ -41,6 +41,7 @@ export default function Main() {
             name={"menu"}
             color={"black"}
             size={30}
+            style={{ color: isSwitchOn === true ? "white" : "black" }}
             onPress={() => navigation.openDrawer()}
           />
         </View>
@@ -55,6 +56,7 @@ export default function Main() {
               name={"cloud-search-outline"}
               color={"black"}
               size={30}
+              style={{ color: isSwitchOn === true ? "white" : "black" }}
               onPress={() => navigation.openDrawer()}
             />
           </View>
