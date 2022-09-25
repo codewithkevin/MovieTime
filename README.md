@@ -7,6 +7,7 @@ Based on the films that the user liked, the application generates recommendation
 <li>REACT NATIVE</li>
 <li>FIREBASE</li>
 <li>CONTEXT</li>
+<li>Tailwind CSS</li>
 </ul>
 
 # Credit 
