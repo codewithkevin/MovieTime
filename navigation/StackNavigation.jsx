@@ -11,6 +11,7 @@ import React, { useContext } from "react";
 import { AppContext } from "./../context/AppContext";
 import Menu from "./DrawerNav";
 import ViewDetails from './../views/ViewScreen';
+import LoginScreen from './../screens/LoginScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +43,11 @@ export default function StackNav() {
           options={{ headerShown: false }}
           name="ViewPage"
           component={ViewDetails}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="login"
+          component={LoginScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

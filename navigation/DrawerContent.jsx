@@ -18,6 +18,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
+
 import Favorite from './../screens/Favorite';
 import Settings from './../screens/Settings';
 import HomeScreen from './../screens/HomeScreen';
@@ -93,13 +94,11 @@ export function DrawerContent(props) {
       </DrawerContentScrollView>
       <Drawer.Section style={styles.bottomDrawerSection}>
         <DrawerItem
-          onPress={() => {
-            alert("Press");
-          }}
+          onPress={() => navigation.navigate("login")}
           icon={({ color, size }) => (
             <Icon name="exit-to-app" color={color} size={size} />
           )}
-          label="Singn Out"
+          label="Account"
         />
       </Drawer.Section>
     </View>

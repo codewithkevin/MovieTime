@@ -15,9 +15,9 @@ export default function Bottom() {
 
   return (
     <Tab.Navigator
-      tabBarOptions={{
-        activeTintColor: "#e3ccb0",
-      }}
+      // tabBarOptions={{
+      //   activeTintColor: "#e3ccb0",
+      // }}
     >
       <Tab.Screen
         name="HomeScreen"
