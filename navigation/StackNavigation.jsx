@@ -10,8 +10,9 @@ import React, { useContext } from "react";
 
 import { AppContext } from "./../context/AppContext";
 import Menu from "./DrawerNav";
-import ViewDetails from './../views/ViewScreen';
-import LoginScreen from './../screens/LoginScreen';
+import ViewDetails from "./../views/ViewScreen";
+import SignInScreen from "./../screens/SignInScreen";
+import SignUpScreen from "./../screens/SingUpScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -46,8 +47,13 @@ export default function StackNav() {
         />
         <Stack.Screen
           options={{ headerShown: false }}
-          name="login"
-          component={LoginScreen}
+          name="signin"
+          component={SignInScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="signup"
+          component={SignUpScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
