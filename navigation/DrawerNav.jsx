@@ -20,10 +20,6 @@ export default function Menu() {
   const dimensions = useWindowDimensions();
 
   return (
-    // <Drawer.Navigator
-    // useLegacyImplementation={true}
-    // drawerContent={props => <DrawerContent {...props} />} initialRouteName="Home">
-
     <Drawer.Navigator
       screenOptions={{
         drawerType: dimensions.width >= 768 ? "permanent" : "front",
