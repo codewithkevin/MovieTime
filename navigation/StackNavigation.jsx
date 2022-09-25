@@ -10,6 +10,7 @@ import React, { useContext } from "react";
 
 import { AppContext } from "./../context/AppContext";
 import Menu from "./DrawerNav";
+import ViewDetails from './../views/ViewScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,28 +21,28 @@ const CustomDarkTheme = {
     border: "#575c66",
     backgroundAlt: "#575c66",
     borderAlt: "#2E3440",
-    text: "#ECEFF4",
+    text: "white",
   },
 };
 
 export default function StackNav() {
   const { isSwitchOn, setIsSwitchOn } = useContext(AppContext);
 
-  const theme = isSwitchOn ? DarkTheme : DefaultTheme;
+  const theme = isSwitchOn ? CustomDarkTheme : DefaultTheme;
 
   return (
     <NavigationContainer theme={theme}>
       <Stack.Navigator initialRouteName="Menu">
         <Stack.Screen
           options={{ headerShown: false }}
-          name="Menu"
+          name="MenuList"
           component={Menu}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           options={{ headerShown: false }}
           name="ViewPage"
-          component={ViewPage}
-        /> */}
+          component={ViewDetails}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,16 +1,24 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
-const Tab = createBottomTabNavigator();
+import React, { useContext } from "react";
 
 //Screens
 import Favorite from './../screens/Favorite';
 import Settings from './../screens/Settings';
 import HomeScreen from './../screens/HomeScreen';
+import { AppContext } from './../context/AppContext';
+
+const Tab = createBottomTabNavigator();
 
 export default function Bottom() {
+    const { isSwitchOn } = useContext(AppContext);
+
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{
+        activeTintColor: "#e3ccb0",
+      }}
+    >
       <Tab.Screen
         name="HomeScreen"
         component={HomeScreen}
@@ -36,7 +44,7 @@ export default function Bottom() {
   );
 }
 
-function makeIconRender(name) {
+function makeIconRender(name, color) {
   return ({ color, size }) => (
     <MaterialCommunityIcons name={name} color={color} size={size} />
   );

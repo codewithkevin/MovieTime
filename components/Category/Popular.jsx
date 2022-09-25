@@ -7,7 +7,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import MovieCard from './cards/Movie';
 
 export default function Popular() {
-  const { movies } = useContext(AppContext);
+  const { movies, isSwitchOn, setIsSwitchOn } = useContext(AppContext);
   const navigation = useNavigation();
   const truncatedString = (str, num) => {
     if (str?.length > num) {
@@ -17,9 +17,14 @@ export default function Popular() {
     }
   };
   return (
-    <View>
+    <View className="ml-[5px] mb-8">
       <View className="flex flex-row justify-between mb-5">
-        <Text className="font-bold  text text-xl">Most Popular Movie</Text>
+        <Text
+          style={{ color: isSwitchOn === true ? "white" : "black" }}
+          className="font-bold text text-xl"
+        >
+          Most Popular Movie
+        </Text>
         <Text
           onPress={() => navigation.navigate("Mostpopular")}
           className="text-md text-blue-400"
@@ -33,7 +38,7 @@ export default function Popular() {
       </View>
       <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
         {movies.map((movie) => {
-          return <MovieCard key={movie.id} movie={movie} />;
+          return <MovieCard theme={isSwitchOn} key={movie.id} movie={movie} />;
         })}
       </ScrollView>
     </View>

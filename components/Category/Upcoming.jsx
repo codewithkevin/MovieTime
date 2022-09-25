@@ -7,7 +7,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Upcard from './cards/Upcard';
 
 export default function Upcoming() {
-  const { upcoming } = useContext(AppContext);
+  const { upcoming, isSwitchOn, setIsSwitchOn } = useContext(AppContext);
   const navigation = useNavigation();
   const truncatedString = (str, num) => {
     if (str?.length > num) {
@@ -17,10 +17,16 @@ export default function Upcoming() {
     }
   };
   return (
-    <View>
+    <View className="ml-[5px] mb-8">
       <View className="flex flex-row justify-between mb-5">
-        <Text className="font-bold  text text-xl">Upcoming</Text>
         <Text
+          style={{ color: isSwitchOn === true ? "white" : "black" }}
+          className="font-bold  text text-xl"
+        >
+          Upcoming
+        </Text>
+        <Text
+          style={{ color: isSwitchOn === true ? "white" : "black" }}
           onPress={() => navigation.navigate("Mostpopular")}
           className="text-md text-blue-400"
         >
@@ -33,7 +39,7 @@ export default function Upcoming() {
       </View>
       <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
         {upcoming.map((movie) => {
-          return <Upcard key={movie.id} movie={movie} />;
+          return <Upcard theme={isSwitchOn} key={movie.id} movie={movie} />;
         })}
       </ScrollView>
     </View>

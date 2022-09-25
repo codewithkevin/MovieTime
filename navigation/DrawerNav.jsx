@@ -20,13 +20,8 @@ export default function Menu() {
   const dimensions = useWindowDimensions();
 
   return (
-    // <Drawer.Navigator
-    // useLegacyImplementation={true}
-    // drawerContent={props => <DrawerContent {...props} />} initialRouteName="Home">
-
     <Drawer.Navigator
-      screenOptions=
-      {{
+      screenOptions={{
         drawerType: dimensions.width >= 768 ? "permanent" : "front",
         drawerStyle: {
           backgroundColor: isSwitchOn === true ? "#011928" : "#F5F5F5",
@@ -35,9 +30,10 @@ export default function Menu() {
       }}
       useLegacyImplementation={true}
       drawerContent={(props) => <DrawerContent {...props} />}
-      initialRouteName="Home" >
+      initialRouteName="Home"
+    >
       <Drawer.Screen
-        options={{ drawerLabel: "Home" }}
+        options={{ drawerLabel: "Home", headerShown: false }}
         name="movietime"
         component={Bottom}
       />

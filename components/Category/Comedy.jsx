@@ -7,7 +7,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Comcard from './cards/Comcard';
 
 export default function comedy() {
-  const { comedy } = useContext(AppContext);
+  const { comedy, isSwitchOn } = useContext(AppContext);
   const navigation = useNavigation();
   const truncatedString = (str, num) => {
     if (str?.length > num) {
@@ -17,10 +17,16 @@ export default function comedy() {
     }
   };
   return (
-    <View>
+    <View className="ml-[5px] mb-8">
       <View className="flex flex-row justify-between mb-5">
-        <Text className="font-bold  text text-xl">Comedy</Text>
         <Text
+          style={{ color: isSwitchOn === true ? "white" : "black" }}
+          className="font-bold  text text-xl"
+        >
+          Comedy
+        </Text>
+        <Text
+          style={{ color: isSwitchOn === true ? "white" : "black" }}
           onPress={() => navigation.navigate("Mostpopular")}
           className="text-md text-blue-400"
         >
@@ -33,7 +39,7 @@ export default function comedy() {
       </View>
       <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
         {comedy.map((movie) => {
-          return <Comcard key={movie.id} movie={movie} />;
+          return <Comcard key={movie.id} theme={isSwitchOn} movie={movie} />;
         })}
       </ScrollView>
     </View>
