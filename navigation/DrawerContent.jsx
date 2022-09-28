@@ -17,19 +17,25 @@ import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { Button } from "react-native-elements";
+import { getAuth, signOut } from "firebase/auth";
 
-
-import Favorite from './../screens/Favorite';
-import Settings from './../screens/Settings';
-import HomeScreen from './../screens/HomeScreen';
+import Favorite from "./../screens/Favorite";
+import Settings from "./../screens/Settings";
+import HomeScreen from "./../screens/HomeScreen";
 import { AppContext } from "./../context/AppContext";
 import Bottom from "./TabNavigation";
+import { useAuthentication } from "./../hooks/useAuthentication";
+
+const auth = getAuth();
 
 export function DrawerContent(props) {
   const navigation = useNavigation();
   const { isSwitchOn, setIsSwitchOn } = useContext(AppContext);
 
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+
+  const { user } = useAuthentication();
 
   return (
     <View style={{ flex: 1 }}>
@@ -54,7 +60,7 @@ export function DrawerContent(props) {
                   style={{ color: isSwitchOn === true ? "white" : "black" }}
                   className="text-[14px]"
                 >
-                  @Test
+                  <Text>{user?.email}</Text>
                 </Caption>
               </View>
             </View>
@@ -94,11 +100,11 @@ export function DrawerContent(props) {
       </DrawerContentScrollView>
       <Drawer.Section style={styles.bottomDrawerSection}>
         <DrawerItem
-          onPress={() => navigation.navigate("signup")}
+          onPress={() => signOut(auth)}
           icon={({ color, size }) => (
             <Icon name="exit-to-app" color={color} size={size} />
           )}
-          label="Account"
+          label="Sing Out"
         />
       </Drawer.Section>
     </View>

@@ -45,16 +45,6 @@ export default function StackNav() {
           name="ViewPage"
           component={ViewDetails}
         />
-        <Stack.Screen
-          options={{ headerShown: false }}
-          name="signin"
-          component={SignInScreen}
-        />
-        <Stack.Screen
-          options={{ headerShown: false }}
-          name="signup"
-          component={SignUpScreen}
-        />
       </Stack.Navigator>
     </NavigationContainer>
   );

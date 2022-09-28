@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Input, Button } from "react-native-elements";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const auth = getAuth();
 export default function SignInScreen({ navigation }) {
@@ -59,6 +59,11 @@ export default function SignInScreen({ navigation }) {
         <TouchableOpacity>
           <Text className="text-blue-300">Forgot your password?</Text>
         </TouchableOpacity>
+        {
+          <Text className="text-center" style={styles.error}>
+            {validationMessage}
+          </Text>
+        }
 
         <TouchableOpacity
           onPress={login}
@@ -66,11 +71,6 @@ export default function SignInScreen({ navigation }) {
         >
           <Text className="text-white font-bold text-[15px]">SIGN IN</Text>
         </TouchableOpacity>
-        {
-          <Text className="text-center" style={styles.error}>
-            {validationMessage}
-          </Text>
-        }
 
         <View className="mt-16">
           <Text className="text-sm text-center text-gray-400 font-bold">
@@ -89,7 +89,7 @@ export default function SignInScreen({ navigation }) {
             <View>
               <Text className="flex">Don't have an account?</Text>
               <TouchableOpacity
-                onPress={() => navigation.navigate("signup")}
+                onPress={() => navigation.navigate("singup")}
                 className="mt-3 items-center"
               >
                 <Text className="text-blue-400 font-bold">SIGN UP</Text>
