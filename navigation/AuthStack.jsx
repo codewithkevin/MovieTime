@@ -7,6 +7,8 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useContext } from "react";
+
+import HomeScreen from "./../screens/HomeScreen";
 import SignInScreen from "./../screens/SignInScreen";
 import SignUpScreen from "./../screens/SingUpScreen";
 
@@ -25,6 +27,11 @@ export default function AuthStack() {
           options={{ headerShown: false }}
           name="singup"
           component={SignUpScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="HomeScreen"
+          component={HomeScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
