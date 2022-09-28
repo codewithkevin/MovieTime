@@ -15,7 +15,7 @@ import { AppContext } from ".././context/AppContext";
 import Popular from "./../components/Category/Popular";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from './../firebse';
+import { db } from "./../firebse";
 
 export default function ViewDetails({ navigation: { goBack } }) {
   const route = useRoute();
@@ -114,7 +114,6 @@ export default function ViewDetails({ navigation: { goBack } }) {
                   size={30}
                   onPress={toggleIsLoading}
                 />
-                {/* <Text className="text-red-600">Hello</Text> */}
               </View>
             </View>
           </View>
@@ -131,61 +130,49 @@ export default function ViewDetails({ navigation: { goBack } }) {
             <View className="flex-initial ml-[120px] mt-5 w-54">
               <Text
                 style={{ color: isSwitchOn === true ? "white" : "black" }}
-                className="font-bold  text-center text-lg basis-1/2"
+                className="font-bold w-full text-center text-lg basis-1/2"
               >
                 {name}
               </Text>
-              <View className="mt-2 mb-4 ml-10">
+              <View className="mt-2 flex flex-row justify-evenly mb-4 ml-5">
                 <Text
                   style={{
                     color: isSwitchOn === true ? "white" : "black",
                   }}
                 >
-                  Watch Time:2hrs 30 min
+                  {vote}
                 </Text>
                 <Text
                   style={{
                     color: isSwitchOn === true ? "white" : "black",
                   }}
                 >
-                  Rating:{vote}
+                  2hrs 30 min
                 </Text>
               </View>
-              <View className="flex flex-row space-x-1">
-                <Text className="bg-blue-800 text-white p-2 rounded">
-                  Action
-                </Text>
-                <Text className="bg-blue-800 hover:bg-blue-700 text-white p-2 rounded">
-                  Drama
-                </Text>
-                <Text className="bg-blue-800 hover:bg-blue-700 text-white  p-2 rounded">
-                  Adventure
-                </Text>
+              <View className="flex flex-row space-x-3">
+                <Text className="bg-gray-300 text-black p-2">Action</Text>
+                <Text className="bg-gray-300 text-black p-2">Drama</Text>
+                <Text className="bg-gray-300 text-black p-2">Adventure</Text>
               </View>
             </View>
           </View>
-          <View className="p-5 mt-3">
+          <View className="p-5 mt-10">
             <Text
               style={{ color: isSwitchOn === true ? "white" : "black" }}
-              className="font-bold text-xl mt-5"
-            >
-              ABOUT
-            </Text>
-            <Text
-              style={{ color: isSwitchOn === true ? "white" : "black" }}
-              className="font-md text-lg"
+              className="font-md text-lg font-bold"
             >
               Release date: <Text className="font-light">{date}</Text>
             </Text>
             <Text
               style={{ color: isSwitchOn === true ? "white" : "black" }}
-              className="font-md text-lg"
+              className="font-md text-lg font-bold"
             >
               Popularity: <Text className="font-light">{popularity}</Text>
             </Text>
             <Text
               style={{ color: isSwitchOn === true ? "white" : "black" }}
-              className="font-md text-lg"
+              className="font-md text-lg font-bold"
             >
               Language: <Text className="font-light">{language}</Text>
             </Text>
@@ -195,7 +182,7 @@ export default function ViewDetails({ navigation: { goBack } }) {
               style={{ color: isSwitchOn === true ? "white" : "black" }}
               className="font-bold text-lg"
             >
-              OVERVIEW
+              STORYLINE
             </Text>
             <Text
               style={{ color: isSwitchOn === true ? "white" : "black" }}
