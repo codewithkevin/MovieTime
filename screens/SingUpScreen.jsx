@@ -108,7 +108,7 @@ export default function SIngUpScreen({ navigation }) {
             <View>
               <Text className="flex">Don't have an account?</Text>
               <TouchableOpacity
-                onPress={() => navigation.navigate("signin")}
+                onPress={() => navigation.navigate("singin")}
                 className="mt-3 items-center"
               >
                 <Text className="text-blue-400 font-bold">SIGN IN</Text>
