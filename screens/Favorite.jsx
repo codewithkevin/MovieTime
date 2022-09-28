@@ -14,11 +14,11 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./../firebse";
-import { AppContext } from './../context/AppContext';
+import { AppContext } from "./../context/AppContext";
 
 export default function Favorite({ navigation }) {
   const [movies, setMovies] = useState([]);
-  const {  isSwitchOn } = useContext(AppContext);
+  const { isSwitchOn } = useContext(AppContext);
 
   useEffect(() => {
     handle();
@@ -36,7 +36,7 @@ export default function Favorite({ navigation }) {
       })
       .catch((error) => console.log(error.message));
   };
-  
+
   const truncatedString = (str, num) => {
     if (str?.length > num) {
       return str.substring(0, num) + "...";
@@ -84,4 +84,3 @@ export default function Favorite({ navigation }) {
     </SafeAreaView>
   );
 }
-
