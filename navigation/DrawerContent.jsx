@@ -60,7 +60,11 @@ export function DrawerContent(props) {
                   style={{ color: isSwitchOn === true ? "white" : "black" }}
                   className="text-[14px]"
                 >
-                  <Text>{user?.email}</Text>
+                  <Text
+                    style={{ color: isSwitchOn === true ? "white" : "black" }}
+                  >
+                    {user?.email}
+                  </Text>
                 </Caption>
               </View>
             </View>
