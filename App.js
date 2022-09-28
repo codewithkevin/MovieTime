@@ -7,6 +7,7 @@ import AppProvider from "./context/AppContext";
 import Loading from "./screens/Loading";
 
 import StackNav from "./navigation/StackNavigation";
+import RootNavigation from './navigation/index';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -20,7 +21,7 @@ export default function App() {
       <AppProvider>
         {loading === false ? (
           <View className="flex-1">
-            <StackNav />
+            <RootNavigation />
           </View>
         ) : (
           <Loading />
