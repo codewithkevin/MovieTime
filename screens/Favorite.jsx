@@ -14,11 +14,16 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./../firebse";
+import { useAuthentication } from "./../hooks/useAuthentication";
 import { AppContext } from "./../context/AppContext";
 
 export default function Favorite({ navigation }) {
   const [movies, setMovies] = useState([]);
+  const [accounts, setAccounts] = useState([]);
   const { isSwitchOn } = useContext(AppContext);
+
+  const { user } = useAuthentication();
+  const user_name = user?.email;
 
   useEffect(() => {
     handle();
@@ -32,10 +37,20 @@ export default function Favorite({ navigation }) {
           data: doc.data(),
           id: doc.id,
         }));
+        const get_account = response.docs.map((doc) => ({
+          data: doc.data(),
+        }));
+        setAccounts(get_account);
         setMovies(movs);
       })
       .catch((error) => console.log(error.message));
   };
+
+  const getAccount = movies.map((elem) => ({
+    user_account: elem.data.account,
+  }));
+
+  console.log(getAccount);
 
   const truncatedString = (str, num) => {
     if (str?.length > num) {
@@ -50,35 +65,37 @@ export default function Favorite({ navigation }) {
     <SafeAreaView className="flex p-3 mb-[200px] w-full h-full">
       <FlatList
         data={movies}
-        renderItem={({ item }) => (
-          <View className="flex p-3 space-x-4 justify-evenly">
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("ViewPage", {
-                  id: item.id,
-                  name: item.title,
-                  background: `https://image.tmdb.org/t/p/original/${item?.poster_path}`,
-                  vote: item?.vote_average,
-                  date: item?.release_date,
-                  popularity: item?.popularity,
-                  language: item?.original_language,
-                  overview: item?.overview,
-                  poster: `https://image.tmdb.org/t/p/original/${item?.poster_path}`,
-                })
-              }
-            >
-              <Image
-                className="w-[170px] h-[190px] rounded-2xl"
-                source={{ uri: item.data.Image }}
-                loading="lazy"
-              />
-            </TouchableOpacity>
-            <Text style={{ color: isSwitchOn === true ? "white" : "black" }}>
-              {" "}
-              {truncatedString(item.data.name, 10)}
-            </Text>
-          </View>
-        )}
+        renderItem={({ item }) =>
+          user_name == item.data.account ? (
+            <View className="flex p-3 space-x-4 justify-evenly">
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("ViewPage", {
+                    id: item.id,
+                    name: item.title,
+                    background: `https://image.tmdb.org/t/p/original/${item?.poster_path}`,
+                    vote: item?.vote_average,
+                    date: item?.release_date,
+                    popularity: item?.popularity,
+                    language: item?.original_language,
+                    overview: item?.overview,
+                    poster: `https://image.tmdb.org/t/p/original/${item?.poster_path}`,
+                  })
+                }
+              >
+                <Image
+                  className="w-[170px] h-[190px] rounded-2xl"
+                  source={{ uri: item.data.Image }}
+                  loading="lazy"
+                />
+              </TouchableOpacity>
+              <Text style={{ color: isSwitchOn === true ? "white" : "black" }}>
+                {" "}
+                {truncatedString(item.data.name, 10)}
+              </Text>
+            </View>
+          ) : null
+        }
         numColumns={2}
       />
     </SafeAreaView>
