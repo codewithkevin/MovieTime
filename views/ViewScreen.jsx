@@ -9,6 +9,9 @@ import {
   Video,
   TouchableHighlight,
 } from "react-native";
+import { useAuthentication } from "./../hooks/useAuthentication";
+import axios from "axios";
+
 import { useNavigation } from "@react-navigation/native";
 import { useRoute } from "@react-navigation/native";
 import { AppContext } from ".././context/AppContext";
@@ -22,6 +25,7 @@ export default function ViewDetails({ navigation: { goBack } }) {
   const [color, setColor] = React.useState(false);
 
   const { isSwitchOn } = useContext(AppContext);
+  const { user } = useAuthentication();
 
   //UseRoute is deprecated in favor of useNavigation
   const id = route.params.id;
@@ -33,6 +37,7 @@ export default function ViewDetails({ navigation: { goBack } }) {
   const language = route.params.language;
   const overview = route.params.overview;
   const poster = route.params.poster;
+  const user_name = user?.email;
 
   const navigation = useNavigation();
 
@@ -54,6 +59,7 @@ export default function ViewDetails({ navigation: { goBack } }) {
           id: id,
           Image: background,
           name: name,
+          account: user_name,
         });
         console.log("Document written with ID: ", docRef.id);
       } catch (e) {
@@ -64,27 +70,24 @@ export default function ViewDetails({ navigation: { goBack } }) {
     }
   };
 
-  // const picture = `https://api.themoviedb.org/3/movie/${id}/images?api_key=34afe6db454cd5e04ddd03b2ca5562a5`;
+  const picture = `https://api.themoviedb.org/3/movie/${id}/images?api_key=34afe6db454cd5e04ddd03b2ca5562a5`;
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await axios.get(
-  //       `https://api.themoviedb.org/3/movie/${id}/images?api_key=34afe6db454cd5e04ddd03b2ca5562a5`
-  //     );
-
-  //     const data = await response.data;
-  //     // console.log(data.backdrops[0].file_path);
-  //     return data;
-  //   }
-
-  //   setvalue((value) => {
-  //     value = fetchData();
-  //     console.log(value);
-  //   });
-  // }, []);
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}/images?api_key=34afe6db454cd5e04ddd03b2ca5562a5`
+      );
+      const data = await response.data;
+      console.log(data.backdrops[0].file_path);
+      return data;
+    }
+    setvalue((value) => {
+      value = fetchData();
+    });
+  }, []);
 
   return (
-    <View>
+    <View className="w-full">
       <ScrollView
         showsVerticalScrollIndicator={false}
         key={id}
