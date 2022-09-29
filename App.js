@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { TailwindProvider } from "tailwindcss-react-native";
 import AppProvider from "./context/AppContext";
 import Loading from "./screens/Loading";
+import { LogBox } from "react-native";
 
 import StackNav from "./navigation/StackNavigation";
 import RootNavigation from "./navigation/index";
@@ -16,6 +17,8 @@ export default function App() {
     setTimeout(() => setLoading(false), 2000);
   }, []);
 
+  LogBox.ignoreAllLogs();
+  
   return (
     <TailwindProvider>
       <AppProvider>
