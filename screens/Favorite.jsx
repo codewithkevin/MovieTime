@@ -38,7 +38,8 @@ export default function Favorite({ navigation }) {
           id: doc.id,
         }));
         const get_account = response.docs.map((doc) => ({
-          data: doc.data(),
+          // data: doc.data(),
+          id: doc.id,
         }));
         setAccounts(get_account);
         setMovies(movs);
@@ -46,11 +47,7 @@ export default function Favorite({ navigation }) {
       .catch((error) => console.log(error.message));
   };
 
-  const getAccount = movies.map((elem) => ({
-    user_account: elem.data.account,
-  }));
-
-  console.log(getAccount);
+  console.log(accounts);
 
   const truncatedString = (str, num) => {
     if (str?.length > num) {

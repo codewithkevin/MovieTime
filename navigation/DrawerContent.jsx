@@ -108,7 +108,7 @@ export function DrawerContent(props) {
           icon={({ color, size }) => (
             <Icon name="exit-to-app" color={color} size={size} />
           )}
-          label="Sing Out"
+          label="Log Out"
         />
       </Drawer.Section>
     </View>

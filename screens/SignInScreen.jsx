@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   TextInput,
-  
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Zocial } from "@expo/vector-icons";
