@@ -9,6 +9,8 @@ import {
   TextInput,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { Zocial } from "@expo/vector-icons";
+import { Fontisto } from "@expo/vector-icons";
 import { Input, Button } from "react-native-elements";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -78,10 +80,30 @@ export default function SignInScreen({ navigation }) {
           </Text>
           <View className="flex justify-between flex-row">
             <TouchableOpacity className="items-center mt-10 bg-blue-600 p-5 rounded-[30px]">
-              <Text className="text-white font-bold text-[15px]">FACEBOOK</Text>
+              <View className="flex flex-row space-x-2">
+                <Zocial
+                  name={"facebook"}
+                  color={"white"}
+                  size={20}
+                  // onPress={toggleIsLoading}
+                />
+                <Text className="text-white font-light mt-1 text-[15px]">
+                  FACEBOOK
+                </Text>
+              </View>
             </TouchableOpacity>
-            <TouchableOpacity className="items-center mt-10 bg-gray-200 p-5 rounded-[30px]">
-              <Text className="text-black font-bold text-[15px]">GOOGLE</Text>
+            <TouchableOpacity className="items-center mt-10 bg-gray-300 p-5 rounded-[30px]">
+              <View className="flex flex-row space-x-2">
+                <Fontisto
+                  name={"google"}
+                  color={"blue"}
+                  size={20}
+                  // onPress={toggleIsLoading}
+                />
+                <Text className="text-black font-light text-[15px]">
+                  Google
+                </Text>
+              </View>
             </TouchableOpacity>
           </View>
 
