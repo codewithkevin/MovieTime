@@ -9,9 +9,10 @@ import {
   TextInput,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { Zocial } from "@expo/vector-icons";
+import { Fontisto } from "@expo/vector-icons";
 import { Input, Button } from "react-native-elements";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
 
 const auth = getAuth();
 
@@ -51,34 +52,39 @@ export default function SIngUpScreen({ navigation }) {
         <Text className="text-center">Your movie is ready</Text>
       </View>
       <View className="mt-10 w-[80%]">
-        <Input
-          placeholder="Email"
-          containerStyle={{ marginTop: 10, backgroundColor: "white" }}
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          leftIcon={<Icon name="envelope" size={16} />}
-        />
-        <Input
-          placeholder="Password"
-          containerStyle={{ marginTop: 10 }}
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          secureTextEntry={true}
-          leftIcon={<Icon name="key" size={16} />}
-        />
-        <Input
-          placeholder="confirm password"
-          containerStyle={{ marginTop: 10 }}
-          value={confirmPassword}
-          onChangeText={(value) => validateAndSet(value, setConfirmPassword)}
-          secureTextEntry
-          leftIcon={<Icon name="key" size={16} />}
-          onBlur={() => checkPassword(password, confirmPassword)}
-        />
-        <TouchableOpacity>
-          <Text className="text-blue-300">Forgot your password?</Text>
-        </TouchableOpacity>
-
+        <View className="mb-7">
+          <TextInput
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-[20px] focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Email"
+            containerStyle={{ marginTop: 10, backgroundColor: "white" }}
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            leftIcon={<Icon name="envelope" size={16} />}
+          />
+        </View>
+        <View className="mb-7">
+          <TextInput
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-[20px] focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Password"
+            containerStyle={{ marginTop: 10 }}
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            secureTextEntry={true}
+            leftIcon={<Icon name="key" size={16} />}
+          />
+        </View>
+        <View className="mb-3">
+          <TextInput
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-[20px] focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="confirm password"
+            containerStyle={{ marginTop: 10 }}
+            value={confirmPassword}
+            onChangeText={(value) => validateAndSet(value, setConfirmPassword)}
+            secureTextEntry
+            leftIcon={<Icon name="key" size={16} />}
+            onBlur={() => checkPassword(password, confirmPassword)}
+          />
+        </View>
         <TouchableOpacity
           onPress={createAccount}
           className="items-center mt-10 bg-[#FB5558] p-5 rounded-[30px]"
@@ -97,10 +103,30 @@ export default function SIngUpScreen({ navigation }) {
           </Text>
           <View className="flex justify-between flex-row">
             <TouchableOpacity className="items-center mt-10 bg-blue-600 p-5 rounded-[30px]">
-              <Text className="text-white font-bold text-[15px]">FACEBOOK</Text>
+              <View className="flex flex-row space-x-2">
+                <Zocial
+                  name={"facebook"}
+                  color={"white"}
+                  size={20}
+                  // onPress={toggleIsLoading}
+                />
+                <Text className="text-white font-light mt-1 text-[15px]">
+                  FACEBOOK
+                </Text>
+              </View>
             </TouchableOpacity>
-            <TouchableOpacity className="items-center mt-10 bg-gray-200 p-5 rounded-[30px]">
-              <Text className="text-black font-bold text-[15px]">GOOGLE</Text>
+            <TouchableOpacity className="items-center mt-10 bg-gray-300 p-5 rounded-[30px]">
+              <View className="flex flex-row space-x-2">
+                <Fontisto
+                  name={"google"}
+                  color={"blue"}
+                  size={20}
+                  // onPress={toggleIsLoading}
+                />
+                <Text className="text-black font-light text-[15px]">
+                  Google
+                </Text>
+              </View>
             </TouchableOpacity>
           </View>
 

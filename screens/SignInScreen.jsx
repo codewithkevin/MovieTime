@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   TextInput,
+  
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Zocial } from "@expo/vector-icons";
@@ -43,23 +44,28 @@ export default function SignInScreen({ navigation }) {
         <Text className="text-center">Your movie is ready</Text>
       </View>
       <View className="mt-10 w-[80%]">
-        <Input
-          placeholder="Email"
-          containerStyle={{ marginTop: 10, backgroundColor: "white" }}
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          leftIcon={<Icon name="envelope" size={16} />}
-        />
-        <Input
-          placeholder="Password"
-          containerStyle={{ marginTop: 10 }}
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          secureTextEntry={true}
-          leftIcon={<Icon name="key" size={16} />}
-        />
+        <View className="mb-7">
+          <TextInput
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-[20px] focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Email"
+            containerStyle={{ marginTop: 10, backgroundColor: "white" }}
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
+        </View>
+        <View className="mb-7">
+          <TextInput
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-[20px] focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Password"
+            containerStyle={{ marginTop: 10 }}
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            secureTextEntry={true}
+            leftIcon={<Icon name="key" size={16} />}
+          />
+        </View>
         <TouchableOpacity>
-          <Text className="text-blue-300">Forgot your password?</Text>
+          <Text className="text-[#77C8B2]">Forgot your password?</Text>
         </TouchableOpacity>
         {
           <Text className="text-center" style={styles.error}>
@@ -74,8 +80,8 @@ export default function SignInScreen({ navigation }) {
           <Text className="text-white font-bold text-[15px]">SIGN IN</Text>
         </TouchableOpacity>
 
-        <View className="mt-16">
-          <Text className="text-sm text-center text-gray-400 font-bold">
+        <View className="mt-10">
+          <Text className="text-sm text-center text-gray-400 font-light">
             or continue with
           </Text>
           <View className="flex justify-between flex-row">
@@ -125,12 +131,11 @@ export default function SignInScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    // // flex: 1,
-    // backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center",
-    // bottom: 50,
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 0,
+    padding: 10,
   },
   error: {
     marginTop: 10,
