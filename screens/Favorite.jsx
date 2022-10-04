@@ -67,7 +67,7 @@ export default function Favorite({ navigation }) {
         data={movies}
         renderItem={({ item }) =>
           user_name == item.data.account ? (
-            <View className="flex p-3 space-x-4 justify-between">
+            <View className="flex p-3 space-x-4 justify-evenly">
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate("ViewPage", {
@@ -95,7 +95,7 @@ export default function Favorite({ navigation }) {
             </View>
           ) : null
         }
-        numColumns={2}
+        numColumns={4}
       />
     </SafeAreaView>
   );
