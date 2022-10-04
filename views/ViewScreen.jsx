@@ -23,9 +23,16 @@ import MoviePhotos from "./collections/MoviePhotos";
 import Cast from "./collections/Cast";
 
 export default function ViewDetails({ navigation: { goBack } }) {
+  //ROutes
   const route = useRoute();
-  const [color, setColor] = React.useState(false);
 
+  //States
+  const [color, setColor] = React.useState(false);
+  const [genre, setGenre] = useState([]);
+  const [dtat, setData] = useState([]);
+  const [cast, setCast] = useState([]);
+
+  //Context Call
   const { isSwitchOn } = useContext(AppContext);
   const { user } = useAuthentication();
 
@@ -41,10 +48,50 @@ export default function ViewDetails({ navigation: { goBack } }) {
   const poster = route.params.poster;
   const user_name = user?.email;
 
+  //NavigationContainer
   const navigation = useNavigation();
 
-  const [genre, setGenre] = useState([]);
-  const [dtat, setData] = useState([]);
+  const credit = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=34afe6db454cd5e04ddd03b2ca5562a5&language=en-US#`;
+
+  const details = `https://api.themoviedb.org/3/movie/${id}?api_key=34afe6db454cd5e04ddd03b2ca5562a5&language=en-US`;
+
+  //UseEFFECTs
+  useEffect(() => {
+    get_images();
+  }, [get_images]);
+
+  useEffect(() => {
+    get_genre();
+  }, [get_genre]);
+
+  useEffect(() => {
+    get_cast();
+  }, []);
+
+  //FUNCTIONS
+  const get_cast = () => {
+    async function fetchData() {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=34afe6db454cd5e04ddd03b2ca5562a5&language=en-US#`
+      );
+      const data = await response.data;
+      setCast(data.cast);
+      return data;
+    }
+    fetchData();
+  };
+  const get_images = () => {
+    async function fetchData() {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}/images?api_key=34afe6db454cd5e04ddd03b2ca5562a5`
+      );
+      const data = await response.data;
+      const list_data = Object.values(data.backdrops);
+      setData(list_data);
+      return data;
+    }
+    fetchData();
+  };
 
   const truncatedString = (str, num) => {
     if (str?.length > num) {
@@ -73,33 +120,6 @@ export default function ViewDetails({ navigation: { goBack } }) {
     }
   };
 
-  const picture = `https://api.themoviedb.org/3/movie/${id}/images?api_key=34afe6db454cd5e04ddd03b2ca5562a5`;
-
-  const details = `https://api.themoviedb.org/3/movie/${id}?api_key=34afe6db454cd5e04ddd03b2ca5562a5&language=en-US`;
-
-  //UseEFFECTs
-  useEffect(() => {
-    get_images();
-  }, [get_images]);
-
-  useEffect(() => {
-    get_genre();
-  }, [get_genre]);
-
-  //FUNCTIONS
-  const get_images = () => {
-    async function fetchData() {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}/images?api_key=34afe6db454cd5e04ddd03b2ca5562a5`
-      );
-      const data = await response.data;
-      const list_data = Object.values(data.backdrops);
-      setData(list_data);
-      return data;
-    }
-    fetchData();
-  };
-
   const get_genre = () => {
     async function fetchData() {
       const response = await axios.get(
@@ -113,8 +133,7 @@ export default function ViewDetails({ navigation: { goBack } }) {
   };
 
   // console.log(genre)
-
-  genre.map((x) => console.log(x));
+  console.log(cast);
 
   return (
     <View className="w-full">
@@ -186,7 +205,9 @@ export default function ViewDetails({ navigation: { goBack } }) {
               <View className="flex flex-row space-x-3">
                 {genre.map((gen) => {
                   return (
-                    <Text className="bg-gray-300 text-black p-2">{gen.name}</Text>
+                    <Text className="bg-gray-300 text-black p-2">
+                      {gen.name}
+                    </Text>
                   );
                 })}
               </View>
@@ -233,38 +254,9 @@ export default function ViewDetails({ navigation: { goBack } }) {
             >
               CAST
             </Text>
-            <ScrollView
-              showsHorizontalScrollIndicator={false}
-              horizontal={true}
-              className="mb-10"
-            >
-              <View className="fles flex-row space-x-5">
-                <Image
-                  className="w-[100px] h-[100px] rounded-full"
-                  source={{
-                    uri: `https://d31wcbk3iidrjq.cloudfront.net/o_-jrOudQ_avatar-mW86BWWsj.jpg?h=900&w=750%27`,
-                  }}
-                />
-                <Image
-                  className="w-[100px] h-[100px] rounded-full"
-                  source={{
-                    uri: `https://www.tvguide.com/a/img/resize/65d292bddc2eed17070e31ad5e73a70717f1bf4a/catalog/provider/10/9/10-33ACE945-90AC-4BD3-964B-81EA3E071D2E.png?auto=webp&fit=crop&height=300&width=200`,
-                  }}
-                />
-                <Image
-                  className="w-[100px] h-[100px] rounded-full"
-                  source={{
-                    uri: `https://www.tvguide.com/a/img/resize/274629d98dc6608018f6cd870b2d25b669e84a36/catalog/provider/10/9/10-ECC06291-864C-4CCF-B500-C02AA09F48C9.png?auto=webp&fit=crop&height=300&width=200`,
-                  }}
-                />
-                <Image
-                  className="w-[100px] h-[100px] rounded-full"
-                  source={{
-                    uri: `https://www.tvguide.com/a/img/resize/9c0c38c085b35cb90454a8baf5d17dec13979d56/catalog/provider/10/9/10-13D84D2E-C6BE-4F98-89C4-F5F4BD410F71.png?auto=webp&fit=crop&height=300&width=200`,
-                  }}
-                />
-              </View>
-            </ScrollView>
+            <View>
+              <Cast cast={cast} />
+            </View>
             <View>
               <Text className="font-bold text text-xl">PHOTO</Text>
               <MoviePhotos dtat={dtat} />
