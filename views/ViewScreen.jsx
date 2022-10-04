@@ -70,6 +70,10 @@ export default function ViewDetails({ navigation: { goBack } }) {
     }
   };
 
+  const fornow = () => {
+    alert("Google")
+  }
+
   const picture = `https://api.themoviedb.org/3/movie/${id}/images?api_key=34afe6db454cd5e04ddd03b2ca5562a5`;
 
   useEffect(() => {
@@ -115,7 +119,7 @@ export default function ViewDetails({ navigation: { goBack } }) {
                   name={"cards-heart"}
                   color={color ? "red" : "gray"}
                   size={30}
-                  onPress={toggleIsLoading}
+                  onPress={fornow}
                 />
               </View>
             </View>
