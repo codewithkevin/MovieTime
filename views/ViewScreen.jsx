@@ -17,9 +17,8 @@ import { useRoute } from "@react-navigation/native";
 import { AppContext } from ".././context/AppContext";
 import Popular from "./../components/Category/Popular";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-// import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "./../firebse";
-import { doc, setDoc } from "firebase/firestore";
 
 export default function ViewDetails({ navigation: { goBack } }) {
   const route = useRoute();
@@ -56,13 +55,13 @@ export default function ViewDetails({ navigation: { goBack } }) {
     setColor((current) => !current);
     if (color === false) {
       try {
-        const docRef = await setDoc(doc(db, "favorite", user_name), {
+        const docRef = await addDoc(collection(db, "collections"), {
           id: id,
           Image: background,
           name: name,
           account: user_name,
         });
-        console.log("Document written with ID: ", docRef);
+        console.log("Document written with ID: ", docRef.id);
       } catch (e) {
         console.error("Error adding document: ", e);
       }

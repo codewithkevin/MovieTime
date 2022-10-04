@@ -38,8 +38,7 @@ export default function Favorite({ navigation }) {
           id: doc.id,
         }));
         const get_account = response.docs.map((doc) => ({
-          // data: doc.data(),
-          id: doc.id,
+          data: doc.data(),
         }));
         setAccounts(get_account);
         setMovies(movs);
@@ -47,7 +46,11 @@ export default function Favorite({ navigation }) {
       .catch((error) => console.log(error.message));
   };
 
-  console.log(accounts);
+  const getAccount = movies.map((elem) => ({
+    user_account: elem.data.account,
+  }));
+
+  console.log(getAccount);
 
   const truncatedString = (str, num) => {
     if (str?.length > num) {
@@ -64,7 +67,7 @@ export default function Favorite({ navigation }) {
         data={movies}
         renderItem={({ item }) =>
           user_name == item.data.account ? (
-            <View className="flex p-3 space-x-4 justify-evenly">
+            <View className="flex p-3 space-x-4 justify-between">
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate("ViewPage", {
@@ -87,8 +90,7 @@ export default function Favorite({ navigation }) {
                 />
               </TouchableOpacity>
               <Text style={{ color: isSwitchOn === true ? "white" : "black" }}>
-                {" "}
-                {truncatedString(item.data.name, 10)}
+                {truncatedString(item.data.name, 15)}
               </Text>
             </View>
           ) : null
