@@ -238,12 +238,10 @@ export default function ViewDetails({ navigation: { goBack } }) {
                 />
               </View>
             </ScrollView>
-            <ScrollView
-              showsHorizontalScrollIndicator={false}
-              horizontal={true}
-            >
+            <View>
+              <Text className="font-bold text text-xl">PHOTO</Text>
               <MoviePhotos dtat={dtat} />
-            </ScrollView>
+            </View>
           </View>
 
           <View className="p-5">

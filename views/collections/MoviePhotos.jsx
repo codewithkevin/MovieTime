@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import React from "react";
 
 const MoviePhotos = ({ dtat }) => {
@@ -6,30 +6,28 @@ const MoviePhotos = ({ dtat }) => {
   //   Object.values(dtat).map((x) => console.log(x.aspect_ratio));
 
   return (
-    <View
+    <ScrollView
+      className="flex flex-1"
       showsHorizontalScrollIndicator={false}
       vertical={false}
       horizontal={true}
     >
-      <Text className="font-bold text text-xl">IMAGES</Text>
-      <View>
-        {dtat.map((item) => {
-          const image = `https://image.tmdb.org/t/p/original/${item?.file_path}`;
+      {dtat.map((item) => {
+        const image = `https://image.tmdb.org/t/p/original/${item?.file_path}`;
 
-          return (
-            <View>
-              <Image
-                className="w-[150px] flex h-[200px] rounded-2xl"
-                source={{
-                  uri: image,
-                }}
-                loading="lazy"
-              />
-            </View>
-          );
-        })}
-      </View>
-    </View>
+        return (
+          <View className="flex mx-4 justify-between">
+            <Image
+              className="w-[250px] h-[180px] rounded-2xl"
+              source={{
+                uri: image,
+              }}
+              loading="lazy"
+            />
+          </View>
+        );
+      })}
+    </ScrollView>
   );
 };
 
