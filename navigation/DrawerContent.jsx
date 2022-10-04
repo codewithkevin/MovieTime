@@ -31,9 +31,7 @@ const auth = getAuth();
 
 export function DrawerContent(props) {
   const navigation = useNavigation();
-  const { isSwitchOn, setIsSwitchOn } = useContext(AppContext);
-
-  const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+  const { isSwitchOn, setIsSwitchOn, onToggleSwitch } = useContext(AppContext);
 
   const { user } = useAuthentication();
 
