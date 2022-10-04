@@ -11,7 +11,6 @@ import {
 } from "react-native";
 import { useAuthentication } from "./../hooks/useAuthentication";
 import axios from "axios";
-
 import { useNavigation } from "@react-navigation/native";
 import { useRoute } from "@react-navigation/native";
 import { AppContext } from ".././context/AppContext";

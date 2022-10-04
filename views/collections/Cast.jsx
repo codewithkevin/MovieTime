@@ -13,10 +13,16 @@ const Cast = ({ cast }) => {
     >
       {cast.map((item) => {
         const image = `https://image.tmdb.org/t/p/original/${item?.profile_path}`;
+        const profile_id = item.id;
         return (
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate("Bio")
+              navigation.navigate("Bio", {
+                id: profile_id,
+                profile: image,
+                Ocuupation: item.known_for_department,
+                gender: item.gender,
+              })
             }
             className="flex mx-4 justify-between"
           >
