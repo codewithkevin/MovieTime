@@ -11,8 +11,7 @@ import React, { useContext } from "react";
 import { AppContext } from "./../context/AppContext";
 import Menu from "./DrawerNav";
 import ViewDetails from "./../views/ViewScreen";
-import SignInScreen from "./../screens/SignInScreen";
-import SignUpScreen from "./../screens/SingUpScreen";
+import CastBio from './../views/collections/CastBio';
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +43,11 @@ export default function StackNav() {
           options={{ headerShown: false }}
           name="ViewPage"
           component={ViewDetails}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="Bio"
+          component={CastBio}
         />
       </Stack.Navigator>
     </NavigationContainer>

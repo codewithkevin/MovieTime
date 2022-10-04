@@ -1,7 +1,10 @@
-import { View, Text, ScrollView, Image } from "react-native";
+import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 
 const Cast = ({ cast }) => {
+  const navigation = useNavigation();
+
   return (
     <ScrollView
       showsHorizontalScrollIndicator={false}
@@ -11,7 +14,12 @@ const Cast = ({ cast }) => {
       {cast.map((item) => {
         const image = `https://image.tmdb.org/t/p/original/${item?.profile_path}`;
         return (
-          <View className="flex mx-4 justify-between">
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("Bio")
+            }
+            className="flex mx-4 justify-between"
+          >
             <Image
               className="w-[100px] h-[100px] rounded-full"
               source={{
@@ -20,7 +28,7 @@ const Cast = ({ cast }) => {
               loading="lazy"
             />
             <Text className="mt-1 text-center">{item.name}</Text>
-          </View>
+          </TouchableOpacity>
         );
       })}
     </ScrollView>
