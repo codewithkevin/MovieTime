@@ -22,6 +22,7 @@ const Cast = ({ cast }) => {
                 profile: image,
                 Ocuupation: item.known_for_department,
                 gender: item.gender,
+                name: item.name,
               })
             }
             className="flex mx-4 justify-between"
