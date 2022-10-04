@@ -80,7 +80,7 @@ export default function ViewDetails({ navigation: { goBack } }) {
         `https://api.themoviedb.org/3/movie/${id}/images?api_key=34afe6db454cd5e04ddd03b2ca5562a5`
       );
       const data = await response.data;
-      const list_data = Object.keys(data)
+      const list_data = Object.values(data.backdrops);
       setData(list_data);
       return data;
     }
@@ -90,7 +90,6 @@ export default function ViewDetails({ navigation: { goBack } }) {
   }, []);
 
   console.log(dtat);
-  console.log(id);
 
   return (
     <View className="w-full">
