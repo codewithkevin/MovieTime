@@ -20,6 +20,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "./../firebse";
 import MoviePhotos from "./collections/MoviePhotos";
+import Cast from "./collections/Cast";
 
 export default function ViewDetails({ navigation: { goBack } }) {
   const route = useRoute();
@@ -42,7 +43,7 @@ export default function ViewDetails({ navigation: { goBack } }) {
 
   const navigation = useNavigation();
 
-  const [value, setvalue] = useState([]);
+  const [genre, setGenre] = useState([]);
   const [dtat, setData] = useState([]);
 
   const truncatedString = (str, num) => {
@@ -74,7 +75,19 @@ export default function ViewDetails({ navigation: { goBack } }) {
 
   const picture = `https://api.themoviedb.org/3/movie/${id}/images?api_key=34afe6db454cd5e04ddd03b2ca5562a5`;
 
+  const details = `https://api.themoviedb.org/3/movie/${id}?api_key=34afe6db454cd5e04ddd03b2ca5562a5&language=en-US`;
+
+  //UseEFFECTs
   useEffect(() => {
+    get_images();
+  }, [get_images]);
+
+  useEffect(() => {
+    get_genre();
+  }, [get_genre]);
+
+  //FUNCTIONS
+  const get_images = () => {
     async function fetchData() {
       const response = await axios.get(
         `https://api.themoviedb.org/3/movie/${id}/images?api_key=34afe6db454cd5e04ddd03b2ca5562a5`
@@ -84,12 +97,24 @@ export default function ViewDetails({ navigation: { goBack } }) {
       setData(list_data);
       return data;
     }
-    setvalue((value) => {
-      value = fetchData();
-    });
-  }, []);
+    fetchData();
+  };
 
-  console.log(dtat);
+  const get_genre = () => {
+    async function fetchData() {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=34afe6db454cd5e04ddd03b2ca5562a5&language=en-US`
+      );
+      const data = await response.data;
+      setGenre(data.genres);
+      return data;
+    }
+    fetchData();
+  };
+
+  // console.log(genre)
+
+  genre.map((x) => console.log(x));
 
   return (
     <View className="w-full">
@@ -159,9 +184,11 @@ export default function ViewDetails({ navigation: { goBack } }) {
                 </Text>
               </View>
               <View className="flex flex-row space-x-3">
-                <Text className="bg-gray-300 text-black p-2">Action</Text>
-                <Text className="bg-gray-300 text-black p-2">Drama</Text>
-                <Text className="bg-gray-300 text-black p-2">Adventure</Text>
+                {genre.map((gen) => {
+                  return (
+                    <Text className="bg-gray-300 text-black p-2">{gen.name}</Text>
+                  );
+                })}
               </View>
             </View>
           </View>
