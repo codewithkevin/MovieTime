@@ -238,12 +238,11 @@ export default function ViewDetails({ navigation: { goBack } }) {
                 />
               </View>
             </ScrollView>
-            <View>
+            <View className="mb-6">
               <Text className="font-bold text text-xl">PHOTO</Text>
               <MoviePhotos dtat={dtat} />
             </View>
           </View>
-
           <View className="p-5">
             <Popular />
           </View>
