@@ -49,7 +49,7 @@ function AppProvider(props) {
   };
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
 
-  // const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+  const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
   const value = {
     movies,
@@ -59,6 +59,7 @@ function AppProvider(props) {
     mainImage,
     isSwitchOn,
     setIsSwitchOn,
+    onToggleSwitch,
   };
   // console.log(keys.adult);
 

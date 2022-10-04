@@ -95,7 +95,7 @@ export default function Favorite({ navigation }) {
             </View>
           ) : null
         }
-        numColumns={4}
+        numColumns={2.5}
       />
     </SafeAreaView>
   );

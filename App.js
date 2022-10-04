@@ -21,15 +21,15 @@ export default function App() {
   
   return (
     <TailwindProvider>
-      <AppProvider>
-        {loading === false ? (
-          <View className="flex-1">
-            <RootNavigation />
-          </View>
-        ) : (
-          <Loading />
-        )}
-      </AppProvider>
+        <AppProvider>
+          {loading === false ? (
+            <View className="flex-1">
+              <RootNavigation />
+            </View>
+          ) : (
+            <Loading />
+          )}
+        </AppProvider>
     </TailwindProvider>
   );
 }

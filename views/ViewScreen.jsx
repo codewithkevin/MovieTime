@@ -19,6 +19,7 @@ import Popular from "./../components/Category/Popular";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "./../firebse";
+import MoviePhotos from "./collections/MoviePhotos";
 
 export default function ViewDetails({ navigation: { goBack } }) {
   const route = useRoute();
@@ -42,6 +43,7 @@ export default function ViewDetails({ navigation: { goBack } }) {
   const navigation = useNavigation();
 
   const [value, setvalue] = useState([]);
+  const [dtat, setData] = useState([]);
 
   const truncatedString = (str, num) => {
     if (str?.length > num) {
@@ -78,13 +80,16 @@ export default function ViewDetails({ navigation: { goBack } }) {
         `https://api.themoviedb.org/3/movie/${id}/images?api_key=34afe6db454cd5e04ddd03b2ca5562a5`
       );
       const data = await response.data;
-      console.log(data.backdrops[0].file_path);
+      const list_data = Object.values(data.backdrops);
+      setData(list_data);
       return data;
     }
     setvalue((value) => {
       value = fetchData();
     });
   }, []);
+
+  console.log(dtat);
 
   return (
     <View className="w-full">
@@ -204,6 +209,7 @@ export default function ViewDetails({ navigation: { goBack } }) {
             <ScrollView
               showsHorizontalScrollIndicator={false}
               horizontal={true}
+              className="mb-10"
             >
               <View className="fles flex-row space-x-5">
                 <Image
@@ -232,6 +238,10 @@ export default function ViewDetails({ navigation: { goBack } }) {
                 />
               </View>
             </ScrollView>
+            <View>
+              <Text className="font-bold text text-xl">PHOTO</Text>
+              <MoviePhotos dtat={dtat} />
+            </View>
           </View>
 
           <View className="p-5">
