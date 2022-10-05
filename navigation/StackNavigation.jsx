@@ -10,8 +10,9 @@ import React, { useContext } from "react";
 
 import Menu from "./DrawerNav";
 import ViewDetails from "./../views/ViewScreen";
-import CastBio from './../views/collections/CastBio';
+import CastBio from '../views/collections/CastBio';
 import { ThemeContext } from './../context/ThemeContext';
+
 
 const Stack = createNativeStackNavigator();
 
