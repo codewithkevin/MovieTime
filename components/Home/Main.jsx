@@ -8,11 +8,13 @@ import Upcoming from "./../Category/Upcoming";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import { ThemeContext } from './../../context/ThemeContext';
 
 
 
 export default function Main() {
-  const { movies, isSwitchOn } = useContext(AppContext);
+  const { movies } = useContext(AppContext);
+  const { isSwitchOn } = useContext(ThemeContext);
   const movie = movies[Math.floor(Math.random() * movies.length)];
   const movie1 = movies[Math.floor(Math.random() * movies.length)];
   const movie2 = movies[Math.floor(Math.random() * movies.length)];

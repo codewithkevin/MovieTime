@@ -47,6 +47,7 @@ function AppProvider(props) {
         console.error(errors);
       });
   };
+  
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
 
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);

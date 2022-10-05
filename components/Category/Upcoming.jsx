@@ -4,10 +4,12 @@ import { AppContext } from ".././../context/AppContext";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Upcard from './cards/Upcard';
+import Upcard from "./cards/Upcard";
+import { ThemeContext } from "./../../context/ThemeContext";
 
 export default function Upcoming() {
-  const { upcoming, isSwitchOn, setIsSwitchOn } = useContext(AppContext);
+  const { upcoming } = useContext(AppContext);
+  const { isSwitchOn, setIsSwitchOn } = useContext(ThemeContext);
   const navigation = useNavigation();
   const truncatedString = (str, num) => {
     if (str?.length > num) {
