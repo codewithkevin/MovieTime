@@ -4,10 +4,12 @@ import { AppContext } from ".././../context/AppContext";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Comcard from './cards/Comcard';
+import Comcard from "./cards/Comcard";
+import { ThemeContext } from "./../../context/ThemeContext";
 
 export default function comedy() {
-  const { comedy, isSwitchOn } = useContext(AppContext);
+  const { comedy } = useContext(AppContext);
+  const { isSwitchOn, setIsSwitchOn } = useContext(ThemeContext);
   const navigation = useNavigation();
   const truncatedString = (str, num) => {
     if (str?.length > num) {

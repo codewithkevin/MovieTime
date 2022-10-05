@@ -5,9 +5,13 @@ import { useNavigation } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import TrailCard from "./cards/TrailCard";
+import { ThemeContext } from "./../../context/ThemeContext";
+
 
 export default function Trailer() {
-  const { trialler, isSwitchOn, setIsSwitchOn } = useContext(AppContext);
+  const { trialler} = useContext(AppContext);
+    const { isSwitchOn, setIsSwitchOn } = useContext(ThemeContext);
+
   const navigation = useNavigation();
   const truncatedString = (str, num) => {
     if (str?.length > num) {
