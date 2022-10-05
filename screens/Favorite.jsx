@@ -15,12 +15,12 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./../firebse";
 import { useAuthentication } from "./../hooks/useAuthentication";
-import { AppContext } from "./../context/AppContext";
+import { ThemeContext } from "./../context/ThemeContext";
 
 export default function Favorite({ navigation }) {
   const [movies, setMovies] = useState([]);
   const [accounts, setAccounts] = useState([]);
-  const { isSwitchOn } = useContext(AppContext);
+  const { isSwitchOn } = useContext(ThemeContext);
 
   const { user } = useAuthentication();
   const user_name = user?.email;

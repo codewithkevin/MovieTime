@@ -23,15 +23,16 @@ import { getAuth, signOut } from "firebase/auth";
 import Favorite from "./../screens/Favorite";
 import Settings from "./../screens/Settings";
 import HomeScreen from "./../screens/HomeScreen";
-import { AppContext } from "./../context/AppContext";
 import Bottom from "./TabNavigation";
 import { useAuthentication } from "./../hooks/useAuthentication";
+import { ThemeContext } from './../context/ThemeContext';
 
 const auth = getAuth();
 
 export function DrawerContent(props) {
   const navigation = useNavigation();
-  const { isSwitchOn, setIsSwitchOn, onToggleSwitch } = useContext(AppContext);
+  const { isSwitchOn, setIsSwitchOn, onToggleSwitch } = useContext(ThemeContext);
+
 
   const { user } = useAuthentication();
 

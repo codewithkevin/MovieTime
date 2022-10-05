@@ -6,16 +6,16 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { Button, View, useWindowDimensions } from "react-native";
 
-//Cusmtomize 
+//Cusmtomize
 import { DrawerContent } from "./DrawerContent";
-import { AppContext } from "./../context/AppContext";
+import { ThemeContext } from "./../context/ThemeContext";
 import React, { useContext } from "react";
-import Bottom from './TabNavigation';
+import Bottom from "./TabNavigation";
 
 const Drawer = createDrawerNavigator();
 
 export default function Menu() {
-    const { isSwitchOn } = React.useContext(AppContext);
+  const { isSwitchOn } = React.useContext(ThemeContext);
 
   const dimensions = useWindowDimensions();
 
@@ -38,5 +38,5 @@ export default function Menu() {
         component={Bottom}
       />
     </Drawer.Navigator>
-  );   
+  );
 }

@@ -4,10 +4,13 @@ import { AppContext } from ".././../context/AppContext";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import MovieCard from './cards/Movie';
+import MovieCard from "./cards/Movie";
+import { ThemeContext } from "./../../context/ThemeContext";
 
 export default function Popular() {
-  const { movies, isSwitchOn, setIsSwitchOn } = useContext(AppContext);
+  const { movies } = useContext(AppContext);
+  const { isSwitchOn, setIsSwitchOn } = useContext(ThemeContext);
+
   const navigation = useNavigation();
   const truncatedString = (str, num) => {
     if (str?.length > num) {

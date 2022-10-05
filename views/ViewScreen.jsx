@@ -13,7 +13,6 @@ import { useAuthentication } from "./../hooks/useAuthentication";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 import { useRoute } from "@react-navigation/native";
-import { AppContext } from ".././context/AppContext";
 import Popular from "./../components/Category/Popular";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
@@ -21,6 +20,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "./../firebse";
 import MoviePhotos from "./collections/MoviePhotos";
 import Cast from "./collections/Cast";
+import { ThemeContext } from './../context/ThemeContext';
 
 export default function ViewDetails({ navigation: { goBack } }) {
   //ROutes
@@ -33,7 +33,7 @@ export default function ViewDetails({ navigation: { goBack } }) {
   const [cast, setCast] = useState([]);
 
   //Context Call
-  const { isSwitchOn } = useContext(AppContext);
+  const { isSwitchOn } = useContext(ThemeContext);
   const { user } = useAuthentication();
 
   //UseRoute is deprecated in favor of useNavigation

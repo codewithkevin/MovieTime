@@ -9,6 +9,7 @@ import { LogBox } from "react-native";
 
 import StackNav from "./navigation/StackNavigation";
 import RootNavigation from "./navigation/index";
+import ThemeContextProvider from "./context/ThemeContext";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -18,10 +19,11 @@ export default function App() {
   }, []);
 
   LogBox.ignoreAllLogs();
-  
+
   return (
     <TailwindProvider>
-        <AppProvider>
+      <AppProvider>
+        <ThemeContextProvider>
           {loading === false ? (
             <View className="flex-1">
               <RootNavigation />
@@ -29,7 +31,8 @@ export default function App() {
           ) : (
             <Loading />
           )}
-        </AppProvider>
+        </ThemeContextProvider>
+      </AppProvider>
     </TailwindProvider>
   );
 }

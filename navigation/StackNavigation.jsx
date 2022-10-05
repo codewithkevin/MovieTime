@@ -8,10 +8,11 @@ import { SafeAreaView, View } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useContext } from "react";
 
-import { AppContext } from "./../context/AppContext";
 import Menu from "./DrawerNav";
 import ViewDetails from "./../views/ViewScreen";
 import CastBio from '../views/collections/CastBio';
+import { ThemeContext } from './../context/ThemeContext';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -27,7 +28,7 @@ const CustomDarkTheme = {
 };
 
 export default function StackNav() {
-  const { isSwitchOn, setIsSwitchOn } = useContext(AppContext);
+  const { isSwitchOn, setIsSwitchOn } = useContext(ThemeContext);
 
   const theme = isSwitchOn ? CustomDarkTheme : DefaultTheme;
 
