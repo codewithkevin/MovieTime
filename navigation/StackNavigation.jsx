@@ -11,7 +11,7 @@ import React, { useContext } from "react";
 import { AppContext } from "./../context/AppContext";
 import Menu from "./DrawerNav";
 import ViewDetails from "./../views/ViewScreen";
-import CastBio from './../views/collections/CastBio';
+import CastBio from '../views/collections/CastBio';
 
 const Stack = createNativeStackNavigator();
 

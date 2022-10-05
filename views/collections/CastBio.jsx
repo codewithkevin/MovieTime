@@ -26,7 +26,7 @@ export default function CastBio() {
   //
   const details = `https://api.themoviedb.org/3/person/${id}?api_key=34afe6db454cd5e04ddd03b2ca5562a5&language=en-US`;
 
-//   const images = `https://api.themoviedb.org/3/person/${id}/images?api_key=34afe6db454cd5e04ddd03b2ca5562a5`;
+  //   const images = `https://api.themoviedb.org/3/person/${id}/images?api_key=34afe6db454cd5e04ddd03b2ca5562a5`;
 
   //UseEFFECTs
   useEffect(() => {
