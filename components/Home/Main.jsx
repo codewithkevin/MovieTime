@@ -7,6 +7,8 @@ import Trailer from "./../Category/Trailer";
 import Upcoming from "./../Category/Upcoming";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+
 
 
 export default function Main() {
@@ -52,8 +54,8 @@ export default function Main() {
         </View>
         <View className="basis-[20%]">
           <View>
-            <MaterialCommunityIcons
-              name={"cloud-search-outline"}
+            <AntDesign
+              name={"search1"}
               color={"black"}
               size={30}
               style={{ color: isSwitchOn === true ? "white" : "black" }}

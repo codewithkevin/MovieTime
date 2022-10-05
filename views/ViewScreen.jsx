@@ -16,6 +16,7 @@ import { useRoute } from "@react-navigation/native";
 import { AppContext } from ".././context/AppContext";
 import Popular from "./../components/Category/Popular";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "./../firebse";
 import MoviePhotos from "./collections/MoviePhotos";
@@ -159,8 +160,8 @@ export default function ViewDetails({ navigation: { goBack } }) {
                 />
               </View>
               <View className="flex-initial ml-[240px] mt-5 w-54">
-                <MaterialCommunityIcons
-                  name={"cards-heart"}
+                <AntDesign
+                  name={"hearto"}
                   color={color ? "red" : "gray"}
                   size={30}
                   onPress={toggleIsLoading}
